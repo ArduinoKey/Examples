@@ -1,0 +1,16 @@
+int MySound = 4;
+int MyRelay = 5;
+boolean SensorState = false; 
+
+void setup() {
+  pinMode(MyRelay, OUTPUT);
+  pinMode(MySound, INPUT);
+}
+
+void loop() {
+  if (digitalRead(MySound) == LOW) {
+    delay(100);                    
+    SensorState = !SensorState;              
+    digitalWrite(MyRelay, SensorState);  
+  }
+}

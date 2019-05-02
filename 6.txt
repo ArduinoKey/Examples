@@ -1,0 +1,23 @@
+const int ledPin = 9;
+int lightLevel, high = 0, low = 1023;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  lightLevel = analogRead(A0);
+  autoTune();
+  analogWrite(ledPin, lightLevel);
+}
+
+void autoTune() {
+  if (lightLevel < low) {
+    low = lightLevel;
+  }
+  if (lightLevel > high) {
+    high = lightLevel;
+  }
+  lightLevel = map(lightLevel, low+30, high-30, 0, 255);
+  lightLevel = constrain(lightLevel, 0, 255);
+}

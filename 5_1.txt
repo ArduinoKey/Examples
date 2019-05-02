@@ -1,0 +1,10 @@
+int ABC = 0;
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  ABC = analogRead(A0);
+  Serial.println(ABC);
+}
